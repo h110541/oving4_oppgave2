@@ -102,7 +102,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 		return (funnet);
 	}
-	
+
 	/*
 	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
 	 * overkjører hascode-metoden da en del biblioterker burker hascode sammen med
@@ -121,10 +121,10 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public boolean equals(Object ny) {
 		if (this == ny)
 			return true;
-		
+
 		if (ny == null)
 			return false;
-		
+
 		if (getClass() != ny.getClass())
 			return false;
 
@@ -132,7 +132,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 		if (antall() != m2.antall())
 			return false;
-		
+
 		boolean likeMengder = true;
 		Iterator<T> teller = m2.oppramser();
 
@@ -155,11 +155,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	/*
 	 * Denne versjonen av unionen er lite effekktiv
-	 * 
+	 *
 	 * @Override public MengdeADT<T> union(MengdeADT<T> m2) { TabellMengde<T> begge
 	 * = new TabellMengde<T>(); for (int i = 0; i < antall; i++) {
 	 * begge.leggTil(tab[i]); } Iterator<T> teller = m2.oppramser();
-	 * 
+	 *
 	 * while (teller.hasNext()) { begge.leggTil(teller.next()); } return
 	 * (MengdeADT<T>)begge; }
 	 */
@@ -171,7 +171,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		T element = null;
 		/*
 		 * ...
-		 * 
+		 *
 		 */
 		return begge;
 	}//
@@ -193,7 +193,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		T element;
 		/*
 		 * Fyll ut
-		 * 
+		 *
 		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
 		 */
 

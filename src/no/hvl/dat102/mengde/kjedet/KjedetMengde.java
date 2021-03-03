@@ -1,7 +1,7 @@
 package no.hvl.dat102.mengde.kjedet;
 
 //********************************************************************
-// Kjedet implementasjon av en mengde. 
+// Kjedet implementasjon av en mengde.
 //********************************************************************
 import java.util.*;
 
@@ -175,7 +175,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		T element;
 		/*
 		 * Fyll ut...
-		 * 
+		 *
 		 * if (this.inneholder(element)) ((KjedetMengde<T>) snittM).settInn(element);
 		 */
 		return snittM;
@@ -187,7 +187,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		T element;
 		/*
 		 * Fyll ut
-		 * 
+		 *
 		 */
 
 		return differensM;
