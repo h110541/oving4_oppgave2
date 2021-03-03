@@ -69,7 +69,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public T fjern(T element) {
-		//TODO
 		// Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
 
 		if (erTom())
@@ -77,9 +76,19 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 		boolean funnet = false;
 		T svar = null;
-		/*
-		 * 
-		 */
+
+		for (int i = 0; i < antall && !funnet; i++) {
+			if (tab[i].equals(element)) {
+				svar = tab[i];
+
+				tab[i] = tab[antall - 1];
+				tab[antall - 1] = null;
+				antall--;
+
+				funnet = true;
+			}
+		}
+
 		return svar;
 	}
 
