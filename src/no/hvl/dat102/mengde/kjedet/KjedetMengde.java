@@ -163,9 +163,21 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		LinearNode<T> aktuell = start;
 		T element = null;
 
-		/*
-		 * Fyll ut
-		 */
+		while (aktuell != null) {
+			((KjedetMengde<T>) begge).settInn(aktuell.getElement());
+			aktuell = aktuell.getNeste();
+		}
+
+		Iterator<T> teller = m2.oppramser();
+
+		while (teller.hasNext()) {
+			element = teller.next();
+
+			if (!inneholder(element)) {
+				((KjedetMengde<T>) begge).settInn(element);
+			}
+		}
+
 		return begge;
 	}//
 
