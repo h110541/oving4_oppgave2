@@ -191,9 +191,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> snittM = new TabellMengde<T>();
 		T element = null;
-		/*
-		 * ...
-		 */
+
+		Iterator<T> teller = m2.oppramser();
+
+		while (teller.hasNext()) {
+			element = teller.next();
+
+			if (inneholder(element)) {
+				((TabellMengde<T>) snittM).settInn(element);
+			}
+		}
+
 		return snittM;
 	}
 
