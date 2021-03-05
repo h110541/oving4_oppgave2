@@ -185,11 +185,17 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> snittM = new KjedetMengde<T>();
 		T element;
-		/*
-		 * Fyll ut...
-		 *
-		 * if (this.inneholder(element)) ((KjedetMengde<T>) snittM).settInn(element);
-		 */
+
+		Iterator<T> teller = m2.oppramser();
+
+		while (teller.hasNext()) {
+			element = teller.next();
+
+			if (inneholder(element)) {
+				((KjedetMengde<T>) snittM).settInn(element);
+			}
+		}
+
 		return snittM;
 	}
 
