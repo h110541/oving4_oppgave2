@@ -203,10 +203,16 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
 		MengdeADT<T> differensM = new KjedetMengde<T>();
 		T element;
-		/*
-		 * Fyll ut
-		 *
-		 */
+
+		Iterator<T> teller = oppramser();
+
+		while (teller.hasNext()) {
+			element = teller.next();
+
+			if(!m2.inneholder(element)) {
+				((KjedetMengde<T>) differensM).settInn(element);
+			}
+		}
 
 		return differensM;
 	}
