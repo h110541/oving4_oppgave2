@@ -207,14 +207,19 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
-		//TODO
+
 		MengdeADT<T> differensM = new TabellMengde<T>();
 		T element;
-		/*
-		 * Fyll ut
-		 *
-		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
-		 */
+
+		Iterator<T> teller = oppramser();
+
+		while (teller.hasNext()) {
+			element = teller.next();
+
+			if(!m2.inneholder(element)) {
+				((TabellMengde<T>) differensM).settInn(element);
+			}
+		}
 
 		return differensM;
 	}
