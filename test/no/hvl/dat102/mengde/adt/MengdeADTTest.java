@@ -14,7 +14,7 @@ public abstract class MengdeADTTest {
 
 	private String[] data1 = { "en", "to", "tre", "fire", "fem" };
 	private String[] data2 = { "seks", "sju", "aatte", "ni", "ti" };
-	private String[] data3 = { "en", "tre", "fem", "sju", "ni" };
+	private String[] data3 = { "en", "tre", "fem", "sju", "ni", "tolv" };
 
 	protected abstract MengdeADT<String> reset();
 
@@ -24,34 +24,31 @@ public abstract class MengdeADTTest {
 		m2 = reset();
 		m3 = reset();
 		fasitMengde = reset();
-	}
 
-	@Test
-	public void testUnion1() {
-		for (String s : data1)
-			m1.leggTil(s);
-
-		for (String s : data3)
-			m2.leggTil(s);
-
-		String[] fasitData = { "en", "to", "tre", "fire", "fem", "sju", "ni" };
-
-		for (String s : fasitData)
-			fasitMengde.leggTil(s);
-
-		MengdeADT<String> resultat = m1.union(m2);
-
-		assertTrue(resultat.equals(fasitMengde));
-	}
-
-	@Test
-	public void testUnion2() {
 		for (String s : data1)
 			m1.leggTil(s);
 
 		for (String s : data2)
 			m2.leggTil(s);
 
+		for (String s : data3)
+			m3.leggTil(s);
+	}
+
+	@Test
+	public void testUnion1() {
+		String[] fasitData = { "en", "to", "tre", "fire", "fem", "sju", "ni", "tolv" };
+
+		for (String s : fasitData)
+			fasitMengde.leggTil(s);
+
+		MengdeADT<String> resultat = m1.union(m3);
+
+		assertTrue(resultat.equals(fasitMengde));
+	}
+
+	@Test
+	public void testUnion2() {
 		String[] fasitData = { "en", "to", "tre", "fire", "fem", "seks", "sju", "aatte", "ni", "ti" };
 
 		for (String s : fasitData)
@@ -63,13 +60,42 @@ public abstract class MengdeADTTest {
 	}
 
 	@Test
-	public void testSnitt() {
-		fail("Not yet implemented");
+	public void testSnitt1() {
+		String[] fasitData = { "en", "tre", "fem" };
+
+		for (String s : fasitData)
+			fasitMengde.leggTil(s);
+
+		MengdeADT<String> resultat = m1.snitt(m3);
+
+		assertTrue(resultat.equals(fasitMengde));
 	}
 
 	@Test
-	public void testDifferens() {
-		fail("Not yet implemented");
+	public void testSnitt2() {
+		MengdeADT<String> resultat = m1.snitt(m2);
+
+		assertTrue(resultat.equals(fasitMengde));
+		assertTrue(resultat.erTom());
+	}
+
+	@Test
+	public void testDifferens1() {
+		String[] fasitData = { "to", "fire" };
+
+		for (String s : fasitData)
+			fasitMengde.leggTil(s);
+
+		MengdeADT<String> resultat = m1.differens(m3);
+
+		assertTrue(resultat.equals(fasitMengde));
+	}
+
+	@Test
+	public void testDifferens2() {
+		MengdeADT<String> resultat = m1.differens(m2);
+
+		assertTrue(resultat.equals(m1));
 	}
 
 }
