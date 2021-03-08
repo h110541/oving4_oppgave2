@@ -236,4 +236,18 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		antall++;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		LinearNode<T> node = start;
+
+		while (node != null) {
+			sb.append(node.getElement().toString());
+			sb.append('\t');
+			node = node.getNeste();
+		}
+
+		return (sb.toString().stripTrailing());
+	}
+
 }// class
