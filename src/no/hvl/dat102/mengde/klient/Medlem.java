@@ -16,7 +16,25 @@ public class Medlem {
 	}
 
 	public boolean passerTil(Medlem medlem2) {
+		if (hobbyer.erTom())
+			return false;
+
 		return (hobbyer.equals(medlem2.getHobbyer()));
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Navn: ");
+		sb.append(navn);
+		sb.append('\n');
+		sb.append("Hobbyer: ");
+		sb.append(hobbyer.toString());
+		sb.append('\n');
+		sb.append("Statusindeks: ");
+		sb.append(statusIndeks);
+
+		return (sb.toString());
 	}
 
 	public String getNavn() {
