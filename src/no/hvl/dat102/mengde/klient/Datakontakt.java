@@ -1,0 +1,87 @@
+package no.hvl.dat102.mengde.klient;
+
+import no.hvl.dat102.mengde.adt.MengdeADT;
+
+public class Datakontakt {
+
+	private static final int START_KAPASITET = 10;
+
+	private int antall;
+	private Medlem[] medlemTab;
+
+	public Datakontakt() {
+		antall = 0;
+		medlemTab = new Medlem[START_KAPASITET];
+	}
+
+	public void leggTilMedlem(Medlem m) {
+
+		if (antall == medlemTab.length)
+			utvidKapasitet();
+
+		medlemTab[antall] = m;
+		antall++;
+	}
+
+	public int finnMedlemsIndeks(String navn) {
+
+		for (int i = 0; i < antall; i++)
+			if (navn.equals(medlemTab[i].getNavn()))
+				return i;
+
+		return -1;
+	}
+
+	public int finnPartnerFor(String navn) {
+		int indeks1 = finnMedlemsIndeks(navn);
+		if (indeks1 == -1)
+			return -1;
+
+		MengdeADT<Hobby> h1 = medlemTab[indeks1].getHobbyer();
+		MengdeADT<Hobby> h2;
+		boolean funnet = false;
+
+		int indeks2 = -1;
+		for (int i = 0; i < antall && indeks2 == -1; i++) {
+			if (i != indeks1 && medlemTab[i].getStatusIndeks() == -1) {
+				h2 = medlemTab[i].getHobbyer();
+
+				if(h1.equals(h2)) {
+					indeks2 = i;
+				}
+			}
+		}
+
+		if (indeks2 != -1) {
+			medlemTab[indeks1].setStatusIndeks(indeks2);
+			medlemTab[indeks2].setStatusIndeks(indeks1);
+		}
+
+		return indeks2;
+	}
+
+	public void tilbakestillStatusIndeks(String navn) {
+		int indeks1 = finnMedlemsIndeks(navn);
+		if (indeks1 == -1)
+			return;
+
+		int indeks2 = medlemTab[indeks1].getStatusIndeks();
+
+		if (indeks2 != -1) {
+			medlemTab[indeks1].setStatusIndeks(-1);
+			medlemTab[indeks2].setStatusIndeks(-1);
+		}
+	}
+
+	private void utvidKapasitet() {
+		int nyKapasitet = medlemTab.length * 2;
+		Medlem[] nyTab = new Medlem[nyKapasitet];
+
+		for (int i = 0; i < antall; i++) {
+			nyTab[i] = medlemTab[i];
+		}
+
+		medlemTab = nyTab;
+	}
+
+}

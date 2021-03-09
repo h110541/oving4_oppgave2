@@ -49,4 +49,8 @@ public class Medlem {
 		return statusIndeks;
 	}
 
+	public void setStatusIndeks(int statusIndeks) {
+		this.statusIndeks = statusIndeks;
+	}
+
 }
