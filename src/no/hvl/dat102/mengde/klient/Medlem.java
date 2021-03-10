@@ -16,10 +16,17 @@ public class Medlem {
 	}
 
 	public boolean passerTil(Medlem medlem2) {
+		if (this == medlem2)
+			return false;
+
 		if (hobbyer.erTom())
 			return false;
 
 		return (hobbyer.equals(medlem2.getHobbyer()));
+	}
+
+	public void leggTilHobby(String hobby) {
+		hobbyer.leggTil(new Hobby(hobby));
 	}
 
 	@Override

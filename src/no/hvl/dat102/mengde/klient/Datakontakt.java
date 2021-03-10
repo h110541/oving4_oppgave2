@@ -1,7 +1,5 @@
 package no.hvl.dat102.mengde.klient;
 
-import no.hvl.dat102.mengde.adt.MengdeADT;
-
 public class Datakontakt {
 
 	private static final int START_KAPASITET = 10;
@@ -37,20 +35,13 @@ public class Datakontakt {
 		if (indeks1 == -1)
 			return -1;
 
-		MengdeADT<Hobby> h1 = medlemTab[indeks1].getHobbyer();
-		MengdeADT<Hobby> h2;
-		boolean funnet = false;
-
+		tilbakestillStatusIndeks(navn);
 		int indeks2 = -1;
-		for (int i = 0; i < antall && indeks2 == -1; i++) {
-			if (i != indeks1 && medlemTab[i].getStatusIndeks() == -1) {
-				h2 = medlemTab[i].getHobbyer();
 
-				if(h1.equals(h2)) {
+		for (int i = 0; i < antall && indeks2 == -1; i++)
+			if (i != indeks1 && medlemTab[i].getStatusIndeks() == -1)
+				if (medlemTab[indeks1].passerTil(medlemTab[i]))
 					indeks2 = i;
-				}
-			}
-		}
 
 		if (indeks2 != -1) {
 			medlemTab[indeks1].setStatusIndeks(indeks2);
@@ -71,6 +62,14 @@ public class Datakontakt {
 			medlemTab[indeks1].setStatusIndeks(-1);
 			medlemTab[indeks2].setStatusIndeks(-1);
 		}
+	}
+
+	public int getAntall() {
+		return antall;
+	}
+
+	public Medlem[] getMedlemTab() {
+		return medlemTab;
 	}
 
 	private void utvidKapasitet() {
