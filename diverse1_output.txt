@@ -1,0 +1,24 @@
+Navn: Ole Olsen
+Hobbyer: 
+Statusindeks: -1
+Navn: Jens Jensen
+Hobbyer: 
+Statusindeks: -1
+false
+##########
+Navn: Ole Olsen
+Hobbyer: <Asdf>
+Statusindeks: -1
+Navn: Jens Jensen
+Hobbyer: <Asdf>
+Statusindeks: -1
+true
+##########
+Navn: Ole Olsen
+Hobbyer: <Qwer>	<Asdf>
+Statusindeks: -1
+Navn: Jens Jensen
+Hobbyer: <Asdf>
+Statusindeks: -1
+false
+##########

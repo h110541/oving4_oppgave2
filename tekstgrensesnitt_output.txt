@@ -1,0 +1,13 @@
+Oppgi navn: Hanne Hannesen
+Oppgi hobbyer (separert med mellomrom): asdf
+
+PARNAVN					HOBBYER
+Ole Olsen og Trine Trinesen		<zxcv>	<asdf>
+Jens Jensen og Lene Lenesen		<qwer>
+Hans Hansen og Hanne Hannesen		<asdf>
+Antall par funnet: 3
+
+PARNAVN					HOBBYER
+Jens Jensen og Lene Lenesen		<qwer>
+Hans Hansen og Hanne Hannesen		<asdf>
+Antall par funnet: 2
